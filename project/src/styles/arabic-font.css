@@ -1,0 +1,46 @@
+/* ---- Tajawal Arabic font faces ---- */
+@font-face {
+  font-family: "AtharArabic";
+  src: url("/fonts/Tajawal-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "AtharArabic";
+  src: url("/fonts/Tajawal-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "AtharArabic";
+  src: url("/fonts/Tajawal-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "AtharArabic";
+  src: url("/fonts/Tajawal-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---- Apply ONLY the font when <html> has .lang-ar ---- */
+/* Use !important to beat inline styles and Tailwind utilities */
+html.lang-ar *:not(svg):not(path):not(i) {
+  font-family: "AtharArabic", Tahoma, Arial, sans-serif !important;
+  letter-spacing: 0 !important;              /* keep spacing consistent */
+  font-kerning: normal;
+  font-variant-ligatures: normal;
+  font-variant-numeric: proportional-nums;   /* avoid numeric width jumps */
+}
+
+/* DO NOT set direction or text-align globally.
+   Remove/keep these commented so layout never changes:
+
+   html.lang-ar { direction: rtl; }
+   html.lang-ar .uppercase { text-transform: none; }
+*/

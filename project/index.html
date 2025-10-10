@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Athar Alamara Architecture</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- Locale preference redirect (runs before app) -->
+    <script>
+    (function () {
+      try {
+        var m = document.cookie.match(/(?:^|;\s*)lang=(ar|en)(?:;|$)/i);
+        var pref = m ? m[1].toLowerCase() : null;
+        var path = location.pathname;
+
+        var isSa = (path === '/sa') || path.startsWith('/sa/');
+        if (pref === 'ar' && !isSa) {
+          location.replace('/sa' + path + location.search + location.hash);
+        } else if (pref === 'en' && isSa) {
+          location.replace(
+            path.replace(/^\/sa(\/?)/, function (_m, slash) { return slash ? '/' : ''; }) +
+            location.search + location.hash
+          );
+        }
+      } catch (e) {}
+    })();
+    </script>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
